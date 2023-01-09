@@ -26,7 +26,8 @@ void TZ80Disassembly::ChangeByteOrder(uint8_t* Bytes, int ByteCount, TByteOrder 
     
 }
 
-TBytesToStrError TZ80Disassembly::BytesToStr(uint8_t* Bytes, int ByteCount, TIntegerDisplayOption IntegerDisplayOption, int& ConvertedByteCount, std::wstring& ConvertedStr) {
+TBytesToStrError TZ80Disassembly::BytesToStr(uint8_t* Bytes, int ByteCount, TIntegerDisplayOption IntegerDisplayOption, 
+    int& ConvertedByteCount, std::wstring& ConvertedStr) {
 
     if (ByteCount < 1) return btseBytesTooShort;
 
@@ -121,7 +122,8 @@ TBytesToStrError TZ80Disassembly::BytesToStr(uint8_t* Bytes, int ByteCount, TInt
 
                 std::wostringstream oss;
 
-                if ((ConvertedStr.find(L"jr") != ConvertedStr.npos) || (ConvertedStr.find(L"djnz") != ConvertedStr.npos)) oss << (Bytes[2] > 127 ? L"-" : L"+");
+                if ((ConvertedStr.find(L"jr") != ConvertedStr.npos) || (ConvertedStr.find(L"djnz") != ConvertedStr.npos))
+                    oss << (Bytes[2] > 127 ? L"-" : L"+");
 
                 switch (IntegerDisplayOption) {
                     case idoDecimal:
@@ -135,7 +137,8 @@ TBytesToStrError TZ80Disassembly::BytesToStr(uint8_t* Bytes, int ByteCount, TInt
                         break;
                 }
 
-                if ((ConvertedStr.find(L"jr") != ConvertedStr.npos) || (ConvertedStr.find(L"djnz") != ConvertedStr.npos)) oss << (Bytes[2] > 127 ? abs(Bytes[2] - 254) : (Bytes[2] + 2));
+                if ((ConvertedStr.find(L"jr") != ConvertedStr.npos) || (ConvertedStr.find(L"djnz") != ConvertedStr.npos))
+                    oss << (Bytes[2] > 127 ? abs(Bytes[2] - 254) : (Bytes[2] + 2));
 
                 else oss << Bytes[bytePos + 1];
 
@@ -157,7 +160,8 @@ TBytesToStrError TZ80Disassembly::BytesToStr(uint8_t* Bytes, int ByteCount, TInt
 
 }
 
-TStrToBytesError TZ80Disassembly::StrToBytes(std::wstring Str, TIntegerDisplayOption IntegerDisplayOption, std::vector<uint8_t>& ConvertedBytes) {
+TStrToBytesError TZ80Disassembly::StrToBytes(std::wstring Str, TIntegerDisplayOption IntegerDisplayOption,
+    std::vector<uint8_t>& ConvertedBytes) {
 
     return stbeInvalidString;
 
