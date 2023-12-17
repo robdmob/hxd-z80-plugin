@@ -17,7 +17,7 @@ TZ80Disassembly::TZ80Disassembly() {
     FFriendlyTypeName = FTypeName;
     FWidth = dtwVariable;
     FMaxTypeSize = 4;
-    FSupportedByteOrders = boBigEndian;
+    FSupportedByteOrders = boLittleEndian;
     FSupportsStrToBytes = FALSE;
 
 }
